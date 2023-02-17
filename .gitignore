@@ -1,0 +1,4 @@
+eventdb.code-workspace
+test/docker
+.env
+config/mosquitto/mqtt.passwd

@@ -1,0 +1,22 @@
+version: "3.7"
+
+services: 
+  mqtt-broker:
+    image: eclipse-mosquitto
+    container_name: eventdb-mqtt
+    ports:
+      - 1883:1883
+      - 8883:8883
+    networks:
+      eventdbnet:
+        aliases:
+          - mqtt
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+    volumes:
+      - ${USERDIR}/mosquitto/:/mosquitto
+      - ./config/mosquitto:/mosquitto/config
+networks:
+  eventdbnet:
+    name: eventdbnet
